@@ -1,14 +1,47 @@
-import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Container, Row, Col, Card, Button, Modal } from 'react-bootstrap';
 
 const services = [
-  { title: 'Video Consultation', description: 'Consult with doctors virtually', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuajIjJzxbHf5oHXcEgUNIZCT2FjTEx3bG5g&s' },
-  { title: 'In-Person Visits', description: 'Doctors visit your location', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYDTi5wQ_K2M-AR7TwMgCcbvHGrkPA0lHC5w&s' },
-  { title: 'Prescription Service', description: 'Get prescriptions instantly', image: 'https://media.istockphoto.com/id/1469686707/photo/delivery-worker-hands-holding-medications-parcel.jpg?s=612x612&w=0&k=20&c=XwgJ2dcED8EClXuo-Ik24hbmF5P5SvFvJnETfw0LHzU=' },
-  { title: 'AI Symptom Checker', description: 'Check your symptoms online', image: 'https://psu-gatsby-files-prod.s3.amazonaws.com/s3fs-public/Cellphone-symptom-checker_50.jpg' }
+  {
+    title: 'Video Consultation',
+    description: 'Consult with doctors virtually',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuajIjJzxbHf5oHXcEgUNIZCT2FjTEx3bG5g&s',
+    details: 'With video consultation, you can consult with top doctors from the comfort of your home. No need to visit hospitals for minor health issues.With video consultation, you can consult with top doctors from the comfort of your home. No need to visit hospitals for minor health issuesWith video consultation, you can consult with top doctors from the comfort of your home. No need to visit hospitals for minor health issues'
+  },
+  {
+    title: 'In-Person Visits',
+    description: 'Doctors visit your location',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYDTi5wQ_K2M-AR7TwMgCcbvHGrkPA0lHC5w&s',
+    details: 'In-person visits allow doctors to check your health status at your location. A convenient option for those who are unable to visit clinics.'
+  },
+  {
+    title: 'Prescription Service',
+    description: 'Get prescriptions instantly',
+    image: 'https://media.istockphoto.com/id/1469686707/photo/delivery-worker-hands-holding-medications-parcel.jpg?s=612x612&w=0&k=20&c=XwgJ2dcED8EClXuo-Ik24hbmF5P5SvFvJnETfw0LHzU=',
+    details: 'Receive digital prescriptions instantly after your consultation, making it easy to get medication without delays.'
+  },
+  {
+    title: 'AI Symptom Checker',
+    description: 'Check your symptoms online',
+    image: 'https://psu-gatsby-files-prod.s3.amazonaws.com/s3fs-public/Cellphone-symptom-checker_50.jpg',
+    details: 'Use our AI-powered tool to check symptoms online and receive advice on whether to seek medical attention.'
+  }
 ];
 
 const Services = () => {
+  // State to manage the modal visibility and selected service
+  const [showModal, setShowModal] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
+  // Function to open the modal and set the selected service
+  const handleShow = (service) => {
+    setSelectedService(service);
+    setShowModal(true);
+  };
+
+  // Function to close the modal
+  const handleClose = () => setShowModal(false);
+
   return (
     <section className="services-section py-5">
       <Container>
@@ -21,12 +54,42 @@ const Services = () => {
                 <Card.Body>
                   <Card.Title>{service.title}</Card.Title>
                   <Card.Text>{service.description}</Card.Text>
-                  <Button variant="outline-primary" onClick={() => alert(`Learn more about ${service.title}`)}>Learn More</Button>
+                  <Button variant="outline-primary" onClick={() => handleShow(service)}>
+                    Learn More
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
           ))}
         </Row>
+
+        {/* Modal */}
+        <Modal show={showModal} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>{selectedService?.title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div className="dtl" 
+              style={{'height' : '100%',
+               'overflowY' : 'scroll'
+
+              }}
+            >
+            <img
+              src={selectedService?.image}
+              alt={selectedService?.title}
+              className="img-fluid mb-3"
+            />
+            
+              <p>{selectedService?.details}</p>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </section>
   );
