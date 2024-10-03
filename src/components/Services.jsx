@@ -6,25 +6,31 @@ const services = [
     title: 'Video Consultation',
     description: 'Consult with doctors virtually',
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuajIjJzxbHf5oHXcEgUNIZCT2FjTEx3bG5g&s',
-    details: 'With video consultation, you can consult with top doctors from the comfort of your home. No need to visit hospitals for minor health issues.With video consultation, you can consult with top doctors from the comfort of your home. No need to visit hospitals for minor health issuesWith video consultation, you can consult with top doctors from the comfort of your home. No need to visit hospitals for minor health issues'
+    details: ['Secure video consultations are available when physical consultations aren’t feasible, making healthcare accessible anywhere.',
+      'Patients can switch between in-person and video consultations if needed, with fees adjusted accordingly.']
   },
   {
     title: 'In-Person Visits',
     description: 'Doctors visit your location',
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYDTi5wQ_K2M-AR7TwMgCcbvHGrkPA0lHC5w&s',
-    details: 'In-person visits allow doctors to check your health status at your location. A convenient option for those who are unable to visit clinics.'
+    details: ['In-person visits allow doctors to check your health status at your location.',
+       'A convenient option for those who are unable to visit clinics.',
+       'Real-time scheduling allows patients to book appointments based on doctor availability.',
+       'Doctors can set their availability and accept consultations based on their schedules.'
+    ]
   },
   {
     title: 'Prescription Service',
     description: 'Get prescriptions instantly',
     image: 'https://media.istockphoto.com/id/1469686707/photo/delivery-worker-hands-holding-medications-parcel.jpg?s=612x612&w=0&k=20&c=XwgJ2dcED8EClXuo-Ik24hbmF5P5SvFvJnETfw0LHzU=',
-    details: 'Receive digital prescriptions instantly after your consultation, making it easy to get medication without delays.'
+    details: 'Doctors can issue e-prescriptions after consultations, and patients can have their medications delivered directly to their homes'
   },
   {
-    title: 'AI Symptom Checker',
+    title: 'AI Symptom Checker/Agents',
     description: 'Check your symptoms online',
     image: 'https://psu-gatsby-files-prod.s3.amazonaws.com/s3fs-public/Cellphone-symptom-checker_50.jpg',
-    details: 'Use our AI-powered tool to check symptoms online and receive advice on whether to seek medical attention.'
+    details: ['An intelligent triage system assesses patient symptoms and matches them with suitable doctors based on their needs.',
+    'Agents (or AI bots) manage initial patient-doctor communication, helping prioritize and filter cases based on urgency and relevance.']
   }
 ];
 
