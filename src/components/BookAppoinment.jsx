@@ -54,7 +54,7 @@ const BookAppointmentCarousel = () => {
     overflow: 'hidden', // Prevent x-scroll
     position: 'relative',
     padding: '50px 0',
-    backgroundColor: '#f9f9f9',
+    backgroundColor: 'white',
     maxWidth: '100vw',
   };
 

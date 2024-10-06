@@ -60,7 +60,7 @@ const VillageCare = () => {
   };
 
   return (
-    <section className="village-care-section" style={{ padding: '50px 0', backgroundColor: '#f1f1f1' }}>
+    <section className="village-care-section" style={{ padding: '50px 0', backgroundColor: 'white' }}>
       <Container>
         <h2 className="text-center mb-5" style={{ fontWeight: 'bold' }}>Services for Underprivileged community</h2>
         <Row>
