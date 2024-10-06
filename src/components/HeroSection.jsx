@@ -18,7 +18,7 @@ const HeroSection = () => {
     <section
       className="hero-section text-center d-flex align-items-center"
       style={{
-        backgroundImage: 'url(https://assets.telegraphindia.com/telegraph/2022/Mar/1646866043_mbbs.jpg)',
+        backgroundImage: 'url(https://cdn.prod.website-files.com/66ffb182a2a1dbe73904d0b5/67023bce652606ecea986e2e_982e9c34-5a05-48d4-84fd-d05422ea6156_2.jpeg)',
         height: '100vh',
         backgroundSize: 'cover',
         backgroundPosition: 'center',

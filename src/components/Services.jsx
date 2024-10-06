@@ -41,7 +41,7 @@ const services = [
 ]
 },
 {
-  title: 'Electronic Medical Records (EMR) Integration',
+  title: 'Electronic Medical Records Integration',
   description: 'Check your symptoms online',
   image: 'https://cdn.prod.website-files.com/66ffb182a2a1dbe73904d0b5/66ffbdb4f537620946144900__e8366582-eb32-4273-8c20-886880e17ac6.jpeg',
   details: ['Patients can store and share medical records securely.',

@@ -56,7 +56,7 @@ const UniqueFeatures = () => {
   };
 
   return (
-    <section className="unique-features-section" style={{ padding: '50px 0', backgroundColor: '#f8f9fa' }}>
+    <section className="unique-features-section" style={{ padding: '50px 0', backgroundColor: 'white' }}>
       <Container>
         <h2 className="text-center mb-5" style={{ fontWeight: 'bold' }}>What Makes DocTalk Unique</h2>
         <div className="carousel-container" style={{ position: 'relative' }}>
