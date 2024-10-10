@@ -1,17 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Container, Button, Modal, Spinner } from 'react-bootstrap';
 
 const HeroSection = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const videoRef = useRef(null);
 
   // Function to open the modal
   const handleBookNow = () => {
-    setShowModal(true); // Set modal to visible
+    setShowModal(true);
   };
 
   // Function to close the modal
   const handleClose = () => {
-    setShowModal(false); // Set modal to hidden
+    setShowModal(false);
+    setShowVideo(false);
+    if (videoRef.current) {
+      const stream = videoRef.current.srcObject;
+      if (stream) {
+        stream.getTracks().forEach((track) => track.stop());
+      }
+    }
+  };
+
+  // Function to start video call
+  const handleVideoCall = async () => {
+    setShowVideo(true);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      if (videoRef.current) {
+        videoRef.current.srcObject = stream;
+      }
+    } catch (err) {
+      console.error('Error accessing media devices.', err);
+    }
   };
 
   return (
@@ -35,32 +57,43 @@ const HeroSection = () => {
         >
           Book Now
         </Button>
-        <Button
-          style={{ width: '20%' }}
-          variant="primary"
-          size="lg"
-          onClick={handleBookNow}
-        >
-          Book Now
-        </Button>
       </Container>
 
       {/* Modal for Finding Nearest Doctor */}
       <Modal show={showModal} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Finding Nearest Doctor</Modal.Title>
+          <Modal.Title>{showVideo ? 'Video Call with Doctor' : 'Finding Nearest Doctor'}</Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-center">
-          <p>Finding nearest doctor available to visit you physically...</p>
-          {/* Spinner Animation */}
-          <Spinner animation="border" role="status">
-            
-          </Spinner>
+          {!showVideo ? (
+            <>
+              <p>Finding nearest doctor available to visit you physically...</p>
+              {/* Spinner Animation */}
+              <Spinner animation="border" role="status"></Spinner>
+            </>
+          ) : (
+            <>
+              <p>Video Consultation with Doctor</p>
+              {/* Video Element */}
+              <video
+                ref={videoRef}
+                autoPlay
+                playsInline
+                style={{ width: '100%', maxHeight: '400px', background: '#000' }}
+              />
+            </>
+          )}
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-center">
-          <Button variant="secondary" onClick={handleClose}>
-            Either go for a video consultant
-          </Button>
+          {!showVideo ? (
+            <Button variant="secondary" onClick={handleVideoCall}>
+              Either go for a video consultation
+            </Button>
+          ) : (
+            <Button variant="secondary" onClick={handleClose}>
+              End Video Call
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
     </section>
