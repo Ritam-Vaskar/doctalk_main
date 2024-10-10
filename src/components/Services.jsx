@@ -111,6 +111,9 @@ const Services = () => {
             </div>
           </Modal.Body>
           <Modal.Footer>
+            <Button>
+              Explore Now
+            </Button>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>

@@ -56,22 +56,33 @@ const villageCareFeatures = [
 const VillageCare = () => {
   // Handle button click events for dummy functionalities
   const handleFeatureClick = (feature) => {
-    alert(`Clicked on ${feature}`);
+    alert(`Clicked on ${feature}... LET US COOK IT FURTHER!`);
   };
 
   return (
     <section className="village-care-section" style={{ padding: '50px 0', backgroundColor: 'white' }}>
       <Container>
-        <h2 className="text-center mb-5" style={{ fontWeight: 'bold' }}>Services for Underprivileged community</h2>
+        <h2 className="text-center mb-5" style={{ fontWeight: 'bold' }}>Services for Underprivileged Community</h2>
         <Row>
           {villageCareFeatures.map((feature, index) => (
             <Col md={6} lg={4} className="mb-4" key={index}>
-              <Card className="h-100x70 shadow-sm">
-                <Card.Img variant="top" src={feature.imageUrl} alt={feature.title} />
-                <Card.Body>
-                  <Card.Title>{feature.title}</Card.Title>
-                  <Card.Text>{feature.description}</Card.Text>
-                  <Button variant="primary" onClick={() => handleFeatureClick(feature.title)}>
+              <Card className="h-10 shadow-sm" style={{ height: '350px' }}>
+                <Card.Img
+                  variant="top"
+                  src={feature.imageUrl}
+                  alt={feature.title}
+                  style={{ height: '150px', objectFit: 'cover' }}
+                />
+                <Card.Body style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  <Card.Title style={{ fontSize: '1.1rem', fontWeight: 'bold' }}>{feature.title}</Card.Title>
+                  <Card.Text style={{ fontSize: '0.9rem', lineHeight: '1.4rem' }}>
+                    {feature.description}
+                  </Card.Text>
+                  <Button
+                    variant="primary"
+                    onClick={() => handleFeatureClick(feature.title)}
+                    style={{ position: 'absolute', bottom: '20px' , width : '90%'}}
+                  >
                     {feature.actionText}
                   </Button>
                 </Card.Body>
