@@ -79,7 +79,7 @@ const Services = () => {
           {services.map((service, index) => (
             <Col md={3} key={index} className="mb-4">
               <Card>
-                <Card.Img variant="top" src={service.image} />
+                <Card.Img variant="top" src={service.image}/>
                 <Card.Body>
                   <Card.Title>{service.title}</Card.Title>
                   <Card.Text>{service.description}</Card.Text>
@@ -105,6 +105,7 @@ const Services = () => {
               src={selectedService?.image}
               alt={selectedService?.title}
               className="img-fluid mb-3"
+              style={{height: '420px' }}
             />
             
               <p>{selectedService?.details}</p>
